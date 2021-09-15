@@ -89,7 +89,7 @@
       <h1>Welcome to Breathe Medics</h1>
       <h2>Get tested for COVID-19 and receive results in as fast as 12h</h2>
       
-      <a href="#about" class="btn-get-started scrollto">Dashboard</a>
+      <a href={% url 'my_dashboard_view' %} class="btn-get-started scrollto">Dashboard</a>
     </div>
   </section><!-- End Hero -->
 
@@ -306,10 +306,6 @@
 
         <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
           <div class="row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
               <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
               <div class="validate"></div>
@@ -318,12 +314,13 @@
               <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 form-group mt-3">
+            <div class="col-md-4 form-group mt-md-0">
               <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
+          </div>
+          <div class="row">
+            
             <div class="col-md-4 form-group mt-3">
               <select name="gender" id="gender" class="form-select">
                 <option value="">Select Gender</option>
@@ -333,7 +330,7 @@
               </select>
               <div class="validate"></div>
             </div>
-            <div class="col-md-4 form-group mt-3">
+            <div class="col-md-8 form-group mt-3">
               <input type="address" class="form-control" name="address" id="address" placeholder="Your Street, City/Municipality, Province" data-rule="address" data-msg="Please enter a valid address">
               <div class="validate"></div>
               <!-- <select name="doctor" id="doctor" class="form-select">
