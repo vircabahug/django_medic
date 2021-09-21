@@ -23,5 +23,8 @@ urlpatterns = [
     path('signin/', views.MySignInView.as_view(), name="my_signin_view"),
     path('signup/', views.MySignUpView.as_view(), name="my_signup_view"),
     path('dashboard/', views.MyDashBoardView.as_view(), name="my_dashboard_view"),
+    path('tables/', views.MyTablesView.as_view(), name="my_tables_view"),
+    path('appointment/', views.MyAppointmentView.as_view(), name="my_appointment_view"),
+    path('staff/', views.MyStaffView.as_view(), name="my_staff_view"),
     path('admin/', admin.site.urls),
 ]

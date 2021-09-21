@@ -28,3 +28,5 @@ class StaffList(models.Model):
     appointment_id = models.ForeignKey(Appointment, on_delete = models.CASCADE)  
     class meta:
         db_table  = 'tblstafflist'
+
+        
