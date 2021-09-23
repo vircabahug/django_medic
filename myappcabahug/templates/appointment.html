@@ -48,18 +48,20 @@
           <p>Quick, straightforward, and easy. Here’s how to engage Breathe Medics for your COVID-19 testing requirements.</p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+        <!-- <form action="forms/appointment.php" method="post" role="form" class="php-email-form"> -->
+          <form method="POST" id="appointment-form" class="appointment-form">
+          {% csrf_token %}
           <div class="row">
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" data-rule="email" data-msg="Please enter a valid email">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="09999999999" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-md-0">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="e.g 2000-12-12 (YYYY-MM-DD)" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
           </div>
@@ -88,15 +90,16 @@
           </div>
 
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Allergies (Optional)"></textarea>
+            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Allergies (If no type none)"></textarea>
             <div class="validate"></div>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <div class="loading">Loading</div>
             <div class="error-message"></div>
             <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Make an Appointment</button></div>
+          </div> -->
+          <div class="mb-5"></div>
+          <div class="text-center" ><button href="{% url 'my_tables_view' %}" type="submit" class="btn btn-primary">Make an Appointment</button></div>
         </form>
 
       </div>

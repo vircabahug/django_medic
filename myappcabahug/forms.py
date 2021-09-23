@@ -9,7 +9,7 @@ class UserForm(forms.ModelForm):
 class AppointmentForm(forms.ModelForm):
 	class Meta:
 		model = Appointment
-		fields= '__all__'
+		fields= ('email', 'phone')
 
 class StaffListForm(forms.ModelForm):
 	class Meta:

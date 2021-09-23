@@ -21,7 +21,9 @@ class MySignUpView(View):
 		return render (request,'signup.html', {})
 
 	def post(self, request):		
-		form = UserForm(request.POST)		
+		form = UserForm(request.POST)
+		
+				
 
 		if form.is_valid():
 
@@ -37,13 +39,35 @@ class MySignUpView(View):
 	
 		else:
 			print(form.errors)
-			return HttpResponse('not valid')
+			return HttpResponse('not valid')	
 
 
 		
 class MyAppointmentView(View):
 	def get(self, request):
-		return render (request,'appointment.html', {})		
+		return render (request,'appointment.html', {})	
+
+	def post(self, request):		
+		form = AppointmentForm(request.POST)		
+
+		if form.is_valid():
+
+			email = request.POST.get("email")
+			phone = request.POST.get("phone")
+			date = request.POST.get("date")
+			gender = request.POST.get("gender")
+			address = request.POST.get("address")
+			message = request.POST.get("message")
+			form = Appointment(email = email, phone = phone, date = date, gender = gender, address = address, message = message)
+			form.save()	
+		
+			return redirect('my_tables_view')
+	
+		else:
+			print(form.errors)
+			return HttpResponse('not valid')
+
+		
 class MyStaffView(View):
 	def get(self, request):
 		return render (request,'staff.html', {})				
