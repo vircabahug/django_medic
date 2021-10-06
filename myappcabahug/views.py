@@ -1,5 +1,4 @@
 from django.http.response import HttpResponse
-from myappcabahug.models import Appointment, StaffList, User
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from myappcabahug import views
@@ -88,3 +87,4 @@ class MyDashBoardView(View):
 	def get(self, request):
 
 		return render (request,'dashboard.html', {})
+		
