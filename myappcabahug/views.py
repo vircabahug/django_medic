@@ -44,12 +44,17 @@ class MySignUpView(View):
 		
 class MyAppointmentView(View):
 	def get(self, request):
-		return render (request,'appointment.html', {})	
+		users = User.objects.all() # TODO: CHANGE THIS TO LOGGED IN USER
+		context= {
+			'users': users
+		}
+		return render (request,'appointment.html', context)	
 
 	def post(self, request):		
 		form = AppointmentForm(request.POST)		
 
 		if form.is_valid():
+			user = User.objects.get(user_id=request.POST.get("user_id"))
 
 			email = request.POST.get("email")
 			phone = request.POST.get("phone")
@@ -57,8 +62,11 @@ class MyAppointmentView(View):
 			gender = request.POST.get("gender")
 			address = request.POST.get("address")
 			message = request.POST.get("message")
-			form = Appointment(email = email, phone = phone, date = date, gender = gender, address = address, message = message)
-			form.save()	
+			app = Appointment(email = email, phone = phone, date = date, gender = gender, address = address, message = message)
+
+			staffList = StaffList(user_id=user,appointment_id=app)
+			app.save()	
+			staffList.save()
 		
 			return redirect('my_tables_view')
 	

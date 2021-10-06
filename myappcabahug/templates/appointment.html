@@ -52,6 +52,16 @@
           <form method="POST" id="appointment-form" class="appointment-form">
           {% csrf_token %}
           <div class="row">
+            <div class="col-4 form-group mb-3 mt-md-0">
+              <select class="form-control" name="user_id" id="user_id" required>
+                <option value="" selected hidden> Select User</option>
+                {% for user in users %}
+                <option value="{{user.user_id}}">{{user.email}} </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-4 form-group mt-3 mt-md-0">
               <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" data-rule="email" data-msg="Please enter a valid email">
               <div class="validate"></div>

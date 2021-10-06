@@ -662,9 +662,9 @@
                 <td>{{s.appointment_id_id}}</td>
                 <td>{{s.user_id_id}}</td>
                 <td>
-                  <a href="#editAppointmentModal" class="edit" data-toggle="modal"><i class="material-icons"
+                  <a href="#editStafflistModal" class="edit" data-toggle="modal"><i class="material-icons"
                       data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteAppointmentModal" class="delete" data-toggle="modal"><i class="material-icons"
+                  <a href="#deleteStafflistModal" class="delete" data-toggle="modal"><i class="material-icons"
                       data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
               </tr>
@@ -687,39 +687,24 @@
       </div>
     </div>
 
-    <div id="editAppointmentModal" class="modal fade">
+    <div id="editStafflistModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
           <form>
             <div class="modal-header">
-              <h4 class="modal-title">Edit Appointment</h4>
+              <h4 class="modal-title">Edit Stafflist</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>Email Address</label>
+                <label>Appointment Id</label>
                 <input type="text" class="form-control" required>
               </div>
               <div class="form-group">
-                <label>Phone</label>
+                <label>User Id</label>
                 <input type="text" class="form-control" required>
               </div>
-              <div class="form-group">
-                <label>Date</label>
-                <input type="email" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Gender</label>
-                <input type="text" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Address</label>
-                <input type="text" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Allergies</label>
-                <input type="text" class="form-control" required>
-              </div>
+            
 
             </div>
             <div class="modal-footer">
@@ -731,12 +716,12 @@
       </div>
     </div>
     <!-- Delete Modal HTML -->
-    <div id="deleteAppointmentModal" class="modal fade">
+    <div id="deleteStafflistModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
           <form>
             <div class="modal-header">
-              <h4 class="modal-title">Delete Appointment</h4>
+              <h4 class="modal-title">Delete Stafflist</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
