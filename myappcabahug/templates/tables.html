@@ -395,7 +395,7 @@
 
                 <td>
                    <a href="#editUserModal-{{u.user_id}}" class="edit" data-toggle="modal" data target="#editUserModal-{{u.user_id}}"><i class="material-icons" title="Edit">&#xE254;</i></a>
-              <a href="#deleteUserModal" class="delete" data-toggle="modal" data target="#deleteUserModal-{{u.user_id}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+              <a href="#deleteUserModal-{{u.user_id}}" class="delete" data-toggle="modal" data target="#deleteUserModal-{{u.user_id}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
   
 <!-- User Modal Update -->  
@@ -448,7 +448,7 @@
                   </div>
 
  <!-- User Modal Delete -->                 
-                  <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="deleteUserModal-{{u.user_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -546,7 +546,7 @@
 
                      <td>
                    <a href="#editAppointmentModal-{{a.appointment_id}}" class="edit" data-toggle="modal" data target="#editAppointmentModal-{{a.appointment_id}}"><i class="material-icons" title="Edit">&#xE254;</i></a>
-              <a href="#deleteAppointmentModal" class="delete" data-toggle="modal" data target="#deleteApppointmentModal-{{a.appointment_id}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+              <a href="#deleteAppointmentModal-{{a.appointment_id}}" class="delete" data-toggle="modal" data target="#deleteApppointmentModal-{{a.appointment_id}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
   
 <!-- Appointment Modal Update -->  
@@ -608,7 +608,7 @@
                   </div>
 
  <!-- Appointment Modal Delete -->                 
-                  <div class="modal fade" id="deleteAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="deleteAppointmentModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="deleteAppointmentModal-{{a.appointment_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteAppointmentModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
