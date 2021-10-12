@@ -108,7 +108,23 @@ class MyTablesView(View):
 			elif 'btnDeleteUser' in request.POST:	
 				userid = request.POST.get("uuserid")
 				user = User.objects.filter(user_id = userid).delete()
-				
+			elif 'btnUpdateAppointment' in request.POST:	
+				print('update profile button clicked')
+				appointmentid = request.POST.get("appointment-appointmentid")
+				email = request.POST.get("appointment-email")			
+				phone = request.POST.get("appointment-phone")
+				date = request.POST.get("appointment-date")
+				gender = request.POST.get("appointment-gender")
+				address = request.POST.get("appointment-address")
+				message = request.POST.get("appointment-message")
+			
+				# email = request.POST.get("student-email")
+				# phone = request.POST.get("student-phone")
+				update_appointment = Appointment.objects.filter(appointment_id = appointmentid).update(email = email, phone= phone, date= date, gender = gender, address = address, message = message )								  
+				print(update_appointment)
+			elif 'btnDeleteAppointment' in request.POST:	
+				appointmentid = request.POST.get("appointmentid")
+				appointment = Appointment.objects.filter(appointment_id = appointmentid).delete()	
 		
 		return redirect('my_tables_view')
 
