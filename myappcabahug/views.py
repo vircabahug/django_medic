@@ -91,6 +91,30 @@ class MyTablesView(View):
 		}
 		return render (request,'tables.html', context)	
 
+	def post(self, request):
+		if request.method == 'POST':	
+			if 'btnUpdateUser' in request.POST:	
+				print('update profile button clicked')
+				userid = request.POST.get("user-userid")
+				email = request.POST.get("user-email")			
+				firstname = request.POST.get("user-firstname")
+				lastname = request.POST.get("user-lastname")
+				password = request.POST.get("user-password")
+			
+				# email = request.POST.get("student-email")
+				# phone = request.POST.get("student-phone")
+				update_user = User.objects.filter(user_id = userid).update(email = email, lastname= lastname, firstname= firstname, password = password )								  
+				print(update_user)
+			elif 'btnDeleteUser' in request.POST:	
+				userid = request.POST.get("uuserid")
+				user = User.objects.filter(user_id = userid).delete()
+				
+		
+		return redirect('my_tables_view')
+
+	
+	
+	
 class MyDashBoardView(View):
 	def get(self, request):
 
