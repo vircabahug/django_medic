@@ -1,9 +1,12 @@
+from django.core.checks import messages
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from myappcabahug import views
 from.models import *
 from .forms import *
+from django.contrib.auth.models import User as DjangoUser
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -14,33 +17,47 @@ class MyIndexView(View):
 class MySignInView(View):
 	def get(self, request):
 		return render (request,'signin.html', {})	
-				
+
+	def post(self, request):
+		username = request.POST.get("username")
+		pw = request.POST.get("password")
+		user = authenticate(request,username=username, password=pw)
+		if user is not None:
+			login(request, user)
+			return redirect('my_index_view')
+		else:
+			messages.Error(request, "User Does not exist")
+			return redirect('my_signin_view')
+
+
 class MySignUpView(View):
 	def get(self, request):
 		return render (request,'signup.html', {})
 
 	def post(self, request):		
-		form = UserForm(request.POST)
-		
-				
+		form = UserForm(request.POST)	
 
 		if form.is_valid():
-
+			username =request.POST.get("username")
 			fname = request.POST.get("firstname")
 			lname = request.POST.get("lastname")
 			email = request.POST.get("email")
 			pw = request.POST.get("password")
 			rpw = request.POST.get("re_password")
-			form = User(firstname = fname, lastname = lname, email = email, password = pw, confirmpassword = rpw)
-			form.save()	
-		
-			return redirect('my_tables_view')
-	
+			if(User.objects.filter(email=email).exists()):
+				messages.Error(request,"Email already exists")
+				return redirect('my_signup_view')
+			else:				
+				form = User(username = username, firstname = fname, lastname = lname, email = email, password = pw, confirmpassword = rpw)
+				form.save()
+
+				DjangoUser.objects.create_user(username,email,pw)
+				return redirect('my_signin_view')
 		else:
 			print(form.errors)
 			return HttpResponse('not valid')	
 
-
+		
 		
 class MyAppointmentView(View):
 	def get(self, request):
@@ -96,14 +113,14 @@ class MyTablesView(View):
 			if 'btnUpdateUser' in request.POST:	
 				print('update profile button clicked')
 				userid = request.POST.get("user-userid")
+				username = request.POST.get("user-username")
 				email = request.POST.get("user-email")			
 				firstname = request.POST.get("user-firstname")
 				lastname = request.POST.get("user-lastname")
 				password = request.POST.get("user-password")
 			
-				# email = request.POST.get("student-email")
-				# phone = request.POST.get("student-phone")
-				update_user = User.objects.filter(user_id = userid).update(email = email, lastname= lastname, firstname= firstname, password = password )								  
+			
+				update_user = User.objects.filter(user_id = userid).update(username = username, email = email, lastname= lastname, firstname= firstname, password = password )								  
 				print(update_user)
 			elif 'btnDeleteUser' in request.POST:	
 				userid = request.POST.get("uuserid")

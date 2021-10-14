@@ -370,6 +370,7 @@
                   </span>
                 </th>
                 <th>User Id</th>
+                <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email Address</th>
@@ -387,6 +388,7 @@
                   </span>
                 </td>
                 <td>{{u.user_id}}</td>
+                <td>{{u.username}}</td>
                 <td>{{u.firstname}}</td>
                 <td>{{u.lastname}}</td>
                 <td>{{u.email}}</td>
@@ -416,6 +418,10 @@
                           <div class="row">
                             <div class="col-12" id="startup-tab-1">
                                 <div class = "row">
+                                <div class = "col-sm-12">
+                                    <label>Username</label><br>
+                                    <input type="text " class="form-control" id="user-username" placeholder="Username " name="user-username" value ={{u.username}}>
+                                  </div>
                                   <div class = "col-sm-12">
                                     <label>First Name</label><br>
                                     <input type="text " class="form-control" id="user-firstname" placeholder="First Name " name="user-firstname" value ={{u.firstname}}>
