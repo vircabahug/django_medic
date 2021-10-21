@@ -27,4 +27,5 @@ urlpatterns = [
     path('appointment/', views.MyAppointmentView.as_view(), name="my_appointment_view"),
     path('staff/', views.MyStaffView.as_view(), name="my_staff_view"),
     path('admin/', admin.site.urls),
+    path('logout', views.MyLogoutView.as_view(), name='logout'),
 ]

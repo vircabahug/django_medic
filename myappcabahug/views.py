@@ -10,9 +10,29 @@ from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
+class MyLogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('my_index_view')
+
+class AuthUser:
+
+    def getUserLogged(request):
+        logged_in_user = False
+        if request.user.is_authenticated:
+            logged_in_user = request.user
+        return logged_in_user
+
 class MyIndexView(View):
 	def get(self, request):
-		return render (request,'index.html', {})
+		
+		context = {
+				'logged_in_user' : AuthUser.getUserLogged(request)
+			}
+		return render (request,'index.html',context)
+        
+ 
+		
 
 class MySignInView(View):
 	def get(self, request):
@@ -61,9 +81,12 @@ class MySignUpView(View):
 		
 class MyAppointmentView(View):
 	def get(self, request):
-		users = User.objects.all() # TODO: CHANGE THIS TO LOGGED IN USER
+		loggedUser = AuthUser.getUserLogged(request)		
+		user = User.objects.get(username=loggedUser) # TODO: CHANGE THIS TO LOGGED IN USER
 		context= {
-			'users': users
+			'user': user
+			
+			
 		}
 		return render (request,'appointment.html', context)	
 

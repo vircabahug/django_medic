@@ -77,9 +77,14 @@
       </nav><!-- .navbar -->
 
       <a href="{% url 'my_appointment_view'%}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+      {% if logged_in_user %}
+    <a  class="appointment-btn scrollto"><span class="d-none d-md-inline">{{logged_in_user}}</a>
+    <a href="logout" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log Out</a>
+      
+      {%else %}
       <a href="{% url 'my_signin_view'%}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Sign In</a>
       <a href="{% url 'my_signup_view'%}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Sign Up</a>
-
+      {% endif %}
     </div>
   </header><!-- End Header -->
 
