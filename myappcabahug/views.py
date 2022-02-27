@@ -176,3 +176,9 @@ class MyDashBoardView(View):
 
 		return render (request,'dashboard.html', {})
 		
+
+class MyConferenceView(View):
+	def get(self, request):
+
+		return render (request,'conference.html', {})
+		
