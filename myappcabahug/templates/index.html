@@ -30,6 +30,27 @@
   <!-- Template Main CSS File -->
   <link href={% static "app/assets/css/style.css" %} rel="stylesheet">
 
+  <!--Conference Room Sources-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+  <meta name="author" content="themefisher.com">
+
+  <title>Novena- Health & Care Medical template</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href={% static "app/conference/images/favicon.ico" %} />
+
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href= {% static "app/conference/plugins/bootstrap/css/bootstrap.min.css" %}>
+  <!-- Icon Font Css -->
+  <link rel="stylesheet" href="app/conference/plugins/icofont/icofont.min.css">
+  <!-- Slick Slider  CSS -->
+  <link rel="stylesheet" href={% static "app/conference/plugins/slick-carousel/slick/slick.css" %}>
+  <link rel="stylesheet" href={% static "app/conference/plugins/slick-carousel/slick/slick-theme.css" %}>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href={% static "app/conference/css/style.css" %}>
+  <link href={% static "app/assets/css/style.css" %} rel="stylesheet">
   <!-- =======================================================
   * Template Name: Medilab - v4.3.0
   * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -70,8 +91,10 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Features</a></li>
+          <li><a class="nav-link scrollto" href="#conference">Conference Room</a></li>
           <li><a class="nav-link scrollto" href="#testimonials">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -257,8 +280,110 @@
       </div>
     </section><!-- End Services Section -->
 
+     <!-- ======= Conference Room Section ======= -->
+     <section id="conference" class="conference">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img">
+              <img src={% static "app/conference/images/about/img-1.jpg" %} alt="" class="img-fluid">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid mt-4">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img mt-4 mt-lg-0">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="about-content pl-4 mt-4 mt-lg-0">
+              <h2 class="title-color">Conference </h2>
+              <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
     
+              <a href="{% url 'my_appointment_view'%}" class="btn btn-main-2 btn-round-full btn-icon">Book<i class="icofont-simple-right ml-3"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="section about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img">
+              <img src={% static "app/conference/images/about/img-1.jpg" %} alt="" class="img-fluid">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid mt-4">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img mt-4 mt-lg-0">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="about-content pl-4 mt-4 mt-lg-0">
+              <h2 class="title-color">U-Shape </h2>
+              <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
+    
+              <a href="{% url 'my_appointment_view'%}" class="btn btn-main-2 btn-round-full btn-icon">Book<i class="icofont-simple-right ml-3"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img">
+              <img src={% static "app/conference/images/about/img-1.jpg" %} alt="" class="img-fluid">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid mt-4">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img mt-4 mt-lg-0">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="about-content pl-4 mt-4 mt-lg-0">
+              <h2 class="title-color">Classroom </h2>
+              <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
+    
+              <a href="{% url 'my_appointment_view'%}" class="btn btn-main-2 btn-round-full btn-icon">Book<i class="icofont-simple-right ml-3"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section about">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img">
+              <img src={% static "app/conference/images/about/img-1.jpg" %} alt="" class="img-fluid">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid mt-4">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="about-img mt-4 mt-lg-0">
+              <img src={% static "app/conference/images/about/img-2.jpg" %} alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="about-content pl-4 mt-4 mt-lg-0">
+              <h2 class="title-color">Theater </h2>
+              <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
+    
+              <a href="{% url 'my_appointment_view'%}" class="btn btn-main-2 btn-round-full btn-icon">Book<i class="icofont-simple-right ml-3"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
 
 
@@ -298,7 +423,22 @@
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
+             
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src={% static "app/assets/img/testimonials/testimonials-3.jpg"%} class="testimonial-img" alt="">
+                  <h3>Carmel Paragoso</h3>
+                  <h4>Designer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    My favorite aspect of this project is how everyone from all functional areas came together to execute as quickly as possible, bringing a critically needed product to market with unprecedented speed. A united front is a POWERFUL thing!
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
           </div>
           <div class="swiper-pagination"></div>
         </div>
