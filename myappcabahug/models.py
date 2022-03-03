@@ -12,22 +12,20 @@ class User(models.Model):
     class meta:
         db_table  = 'tbluser'
 
-class Appointment(models.Model):
-    appointment_id = models.AutoField(primary_key=True)
-    email = models.CharField(max_length = 50)
-    phone = models.CharField(max_length = 20)
+class Reservation(models.Model):
+    reservation_id = models.AutoField(primary_key=True)
+    timeslot = models.CharField(max_length = 50)
     date = models.DateField(max_length= 20)
-    gender = models.CharField(max_length= 6)
-    address = models.CharField(max_length= 50)
-    message = models.CharField(max_length= 100)
+    roomtype = models.CharField(max_length= 50)
     class meta:
-        db_table  = 'tblappointment'
+        db_table  = 'tblreservation'
  
-class StaffList(models.Model):
-    seqid  = models.AutoField(primary_key=True)
+class Conference(models.Model):
+    conferenceid  = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete = models.CASCADE)
-    appointment_id = models.ForeignKey(Appointment, on_delete = models.CASCADE)  
+    reservation_id = models.ForeignKey(Reservation, on_delete = models.CASCADE)  
+    status = models.CharField(max_length=50)
     class meta:
-        db_table  = 'tblstafflist'
+        db_table  = 'tblconference'
 
         

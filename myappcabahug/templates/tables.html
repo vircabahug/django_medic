@@ -503,12 +503,12 @@
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2>Appointment <b>Table</b></h2>
+                <h2>Reservation <b>Table</b></h2>
               </div>
               <div class="col-sm-6">
                 <a href="{% url 'my_appointment_view' %}" class="btn btn-success"><i class="material-icons">&#xE147;</i>
-                  <span>Add an Appointment</span></a>
-                <a href="#deleteAppointmentModal" class="btn btn-danger" data-toggle="modal"><i
+                  <span>Add a Reservation</span></a>  
+                <a href="#deleteReservationModal" class="btn btn-danger" data-toggle="modal"><i
                     class="material-icons">&#xE15C;</i> <span>Delete</span></a>
               </div>
             </div>
@@ -522,18 +522,15 @@
                     <label for="selectAll"></label>
                   </span>
                 </th>
-                <th>Appointment Id</th>
-                <th>Email Address</th>
-                <th>Phone</th>
+                <th>Reservation Id</th>
+                <th>Timeslot</th>
                 <th>Date</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>Allergies</th>
+                <th>Room Type</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {% for a in appointments %}
+              {% for r in reservations %}
               <tr>
                 <td>
                   <span class="custom-checkbox">
@@ -541,23 +538,19 @@
                     <label for="checkbox1"></label>
                   </span>
                 </td>
-                <td>{{a.appointment_id}}</td>
-                <td>{{a.email}}</td>
-                <td>{{a.phone}}</td>
-                <td>{{a.date}}</td>
-                <td>{{a.gender}}</td>
-                <td>{{a.address}}</td>
-                <td>{{a.message}}</td>
-
+                <td>{{r.reservation_id}}</td>
+                <td>{{r.timeslot}}</td>
+                <td>{{r.date}}</td>
+                <td>{{r.roomtype}}</td>
 
                      <td>
-                   <a href="#editAppointmentModal-{{a.appointment_id}}" class="edit" data-toggle="modal" data target="#editAppointmentModal-{{a.appointment_id}}"><i class="material-icons" title="Edit">&#xE254;</i></a>
-              <a href="#deleteAppointmentModal-{{a.appointment_id}}" class="delete" data-toggle="modal" data target="#deleteApppointmentModal-{{a.appointment_id}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                   <a href="#editReservationModal-{{r.reservation_id}}" class="edit" data-toggle="modal" data target="#editReservationModal-{{r.reservation_id}}"><i class="material-icons" title="Edit">&#xE254;</i></a>
+              <a href="#deleteReservationModal-{{r.reservation_id}}" class="delete" data-toggle="modal" data target="#deleteReservationModal-{{r.reservation_id}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
             </td>
   
-<!-- Appointment Modal Update -->  
+<!-- Reservation Modal Update -->  
           <!-- Modal VIEW-->
-                  <div class="modal fade" id="editAppointmentModal-{{a.appointment_id}}" tabindex="-1" role="dialog" aria-labelledby="editAppointmentModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="editReservationModal-{{r.reservation_id}}" tabindex="-1" role="dialog" aria-labelledby="editReservationModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content">
                         <div class="modal-header" style="background-color:#ffffff">
@@ -566,46 +559,33 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form id="updateAppointment" method="post" >
+                        <form id="updateReservation" method="post" >
                         {% csrf_token %}
                         <div class="modal-body">
-                          <input type="text" name="appointment-appointmentid" value = {{a.appointment_id}} hidden>
+                          <input type="text" name="reservation-reservationid" value = {{r.reservation_id}} hidden>
                           <div class="row">
                             <div class="col-12" id="startup-tab-1">
                                 <div class = "row">
                                   <div class = "col-sm-12">
-                                    <label>Email</label><br>
-                                    <input type="email " class="form-control" id="appointment-email" placeholder="Email " name="appointment-email" value ={{a.email}}>
-                                  </div>
-                                  <div class = "col-sm-8">
-                                     <br><label>Phone</label>
-                                    <input type="text" class="form-control" id="appointment-phone" placeholder="Phone"  name="appointment-phone" value ={{a.phone}}>
-                                  </div>
-
+                                    <label>Timeslot</label><br>
+                                    <input type="text " class="form-control" id="reservation-timeslot" placeholder="Email " name="reservation-timeslot" value ={{r.timeslot}}>
                                 </div>
                                 <div class = "row">
                                 <div class = "col-sm-8">
                                   <br><label>Date</label>
-                                  <input type="date" class="form-control" id="appointment-date" placeholder="Date "  name="appointment-date" value ={{a.date}}>
+                                  <input type="date" class="form-control" id="reservation-date" placeholder="Date "  name="reservation-date" value ={{r.date}}>
                                 </div>
                                 <div class = "col-sm-8">
-                                     <br><label>Gender</label>
-                                    <input type="text" class="form-control" id="appointment-gender" placeholder="Gender"  name="appointment-gender" value ={{a.gender}}>
+                                     <br><label>Room Type</label>
+                                    <input type="text" class="form-control" id="reservation-roomtype" placeholder="Gender"  name="reservation-roomtype" value ={{r.roomtype}}>
                                   </div>
-                                  <div class = "col-sm-8">
-                                     <br><label>Address</label>
-                                    <input type="text" class="form-control" id="appointment-address" placeholder="Address"  name="appointment-address" value ={{a.address}}>
-                                  </div>
-                                  <div class = "col-sm-8">
-                                     <br><label>Allergies</label>
-                                    <input type="text" class="form-control" id="appointment-message" placeholder="Allergies"  name="appointment-message" value ={{a.message}}>
                                   </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">  
-                            <button type="submit" id = "btnUpdate" name = "btnUpdateAppointment" class="button">UPDATE</button>
+                            <button type="submit" id = "btnUpdate" name = "btnUpdateReservation" class="button">UPDATE</button>
                             <button type="button" class="button btn-secondary" data-dismiss="modal">CLOSE</button>                          
                         </div>
                       </div>
@@ -613,12 +593,12 @@
                     </div>
                   </div>
 
- <!-- Appointment Modal Delete -->                 
-                  <div class="modal fade" id="deleteAppointmentModal-{{a.appointment_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteAppointmentModalLabel" aria-hidden="true">
+ <!-- Reservation Modal Delete -->                 
+                  <div class="modal fade" id="deleteReservationModal-{{r.reservation_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteReservationModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="deleteAppointmentModalLabel">DELETE RECORD</h5>
+                          <h5 class="modal-title" id="deleteReservationModalLabel">DELETE RECORD</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -626,12 +606,12 @@
                         <form id="deleteForm" method="post" >
                         {% csrf_token %} 
                         <div class="modal-body">                       
-                          <input type="text" name="appointmentid" value = {{a.appointment_id}} hidden>
+                          <input type="text" name="reservationid" value = {{r.reservation_id}} hidden>
                           Are you sure you want to delete this record?
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                          <button type="submit" id = "btnDelete" name = "btnDeleteAppointment" class="btn btn-primary">YES</button>
+                          <button type="submit" id = "btnDelete" name = "btnDeleteReservation" class="btn btn-primary">YES</button>
                         </div>
                       </div>
                     </form>
@@ -663,12 +643,12 @@
           <div class="table-title">
             <div class="row">
               <div class="col-sm-6">
-                <h2>Stafflist <b>Table</b></h2>
+                <h2>Conference Room <b>Table</b></h2>
               </div>
               <div class="col-sm-6">
                 <a href="{% url 'my_appointment_view' %}" class="btn btn-success"><i class="material-icons">&#xE147;</i>
-                  <span>Add Stafflist</span></a>
-                <a href="#deleteAppointmentModal" class="btn btn-danger" data-toggle="modal"><i
+                  <span>Add Conference Room</span></a>
+                <a href="#deleteReservationModal" class="btn btn-danger" data-toggle="modal"><i
                     class="material-icons">&#xE15C;</i> <span>Delete</span></a>
               </div>
             </div>
@@ -682,13 +662,14 @@
                     <label for="selectAll"></label>
                   </span>
                 </th>
-                <th>Sequence Id</th>
-                <th>Appointment Id</th>
+                <th>Conference Id</th>
+                <th>Reservation Id</th>
                 <th>User Id</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              {% for s in stafflists %}
+              {% for c in conferences %}
               <tr>
                 <td>
                   <span class="custom-checkbox">
@@ -696,13 +677,15 @@
                     <label for="checkbox1"></label>
                   </span>
                 </td>
-                <td>{{s.seqid}}</td>
-                <td>{{s.appointment_id_id}}</td>
-                <td>{{s.user_id_id}}</td>
+                <td>{{c.conferenceid}}</td>
+                <td>{{c.reservation_id_id}}</td>
+                <td>{{c.user_id_id}}</td>
+                <td>{{c.status}}</td>
+
                 <td>
-                  <a href="#editStafflistModal" class="edit" data-toggle="modal"><i class="material-icons"
+                  <a href="#editConferenceModal" class="edit" data-toggle="modal"><i class="material-icons"
                       data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteStafflistModal" class="delete" data-toggle="modal"><i class="material-icons"
+                  <a href="#deleteConferenceModal" class="delete" data-toggle="modal"><i class="material-icons"
                       data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
               </tr>
@@ -725,17 +708,17 @@
       </div>
     </div>
 
-    <div id="editStafflistModal" class="modal fade">
+    <div id="editConferenceModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
           <form>
             <div class="modal-header">
-              <h4 class="modal-title">Edit Stafflist</h4>
+              <h4 class="modal-title">Edit Conference</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>Appointment Id</label>
+                <label>Reservation Id</label>
                 <input type="text" class="form-control" required>
               </div>
               <div class="form-group">
@@ -755,119 +738,7 @@
     </div>
     
 
-    <!-- Card header -->
-    <!-- Dark table -->
-    <!--
-      <div class="row">
-        <div class="col">
-          <div class="card bg-default shadow">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Users Table</h3>
-            </div>
-
-            <div class="table-responsive">
-              <div align="right"><a href="{% url 'my_signup_view' %}" class="btn btn-sm btn-neutral">Add A User</a></div>
-              <table class="table align-items-center table-dark table-flush">
-                <thead class="thead-dark">
-                  <tr>
-                      <th>User Id</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Email Address</th>
-                      <th>Password</th>
-                       <th>Confirm Password</th>
-                    </tr>
-                  <tbody>
-                      {% for u in users %}
-                    <tr>
-                        <td>{{u.user_id}}</td>
-                        <td>{{u.firstname}}</td>
-                        <td>{{u.lastname}}</td>
-                        <td>{{u.email}}</td>
-                        <td>{{u.password}}</td>
-                        <td>{{u.confirmpassword}}</td>
-
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </thead>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="card bg-default shadow">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Users Appointment Table</h3>
-            </div>
-            <div class="table-responsive">
-              <div align="right"><a href="{% url 'my_appointment_view' %}" class="btn btn-sm btn-neutral">Add An Appointment</a></div>
-              <table class="table align-items-center table-dark table-flush">
-                <thead class="thead-dark">
-                <tr>
-                      <th>Appointment Id</th>
-                      <th>Email Address</th>
-                      <th>Phone</th>
-                      <th>Date</th>
-                      <th>Gender</th>
-                      <th>Address</th>
-                      <th>Allergies</th>
-                 </tr>
-                  </thead>
-                    <tbody>
-                      {% for a in appointments %}
-                      <tr>
-                        <td>{{a.appointment_id}}</td>
-                        <td>{{a.email}}</td>
-                        <td>{{a.phone}}</td>
-                        <td>{{a.date}}</td>
-                        <td>{{a.gender}}</td>
-                        <td>{{a.address}}</td>
-                        <td>{{a.message}}</td> 
-                       </tr>
-                      {% endfor %}
-                    </tbody>
-                </thead>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="card bg-default shadow">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Stafflist  Table</h3>
-            </div>
-            <div class="table-responsive">
-              <div align="right"><a href="{% url 'my_staff_view' %}" class="btn btn-sm btn-neutral">Add a Staff</a></div>
-              <table class="table align-items-center table-dark table-flush">
-                <thead class="thead-dark">
-                 <tr>
-                              <th>Sequence Id</th>
-                              <th>Appointment Id</th>
-                              <th>User Id</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                           {% for s in stafflists %}
-                            <tr>
-                              <td>{{s.seqid}}</td>
-                              <td>{{s.appointment_id_id}}</td>
-                              <td>{{s.user_id_id}}</td>
-                              
-                            </tr>
-                             {% endfor %}
-                          </tbody>
-                </thead>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+    
       <!-- Footer -->
     <footer class="footer pt-0">
       <div class="row align-items-center justify-content-lg-between">

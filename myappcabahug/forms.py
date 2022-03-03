@@ -6,12 +6,12 @@ class UserForm(forms.ModelForm):
 		model = User
 		fields= ('email','password')
 
-class AppointmentForm(forms.ModelForm):
+class ReservationForm(forms.ModelForm):
 	class Meta:
-		model = Appointment
-		fields= ('email', 'phone')
+		model = Reservation
+		fields= ('roomtype', 'timeslot')
 
-class StaffListForm(forms.ModelForm):
+class ConferenceForm(forms.ModelForm):
 	class Meta:
-		model = StaffList
+		model = Conference
 		fields= '__all__'                    
