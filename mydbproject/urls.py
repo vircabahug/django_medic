@@ -27,4 +27,5 @@ urlpatterns = [
     path('reservation/', views.MyReservationView.as_view(), name="my_appointment_view"),
     path('admin/', admin.site.urls),
     path('logout', views.MyLogoutView.as_view(), name='logout'),
+
 ]

@@ -9,7 +9,7 @@ class UserForm(forms.ModelForm):
 class ReservationForm(forms.ModelForm):
 	class Meta:
 		model = Reservation
-		fields= ('roomtype', 'timeslot')
+		fields= ('roomtype','timeslot')
 
 class ConferenceForm(forms.ModelForm):
 	class Meta:

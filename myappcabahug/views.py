@@ -2,6 +2,7 @@ from django.core.checks import messages
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import View
+from matplotlib.style import context
 from myappcabahug import views
 from.models import *
 from .forms import *
@@ -105,7 +106,7 @@ class MyReservationView(View):
 			app.save()	
 			#conference.save()
 		
-			return redirect('my_tables_view')
+			return redirect('my_index_view')
 	
 		else:
 			print(form.errors)
@@ -160,9 +161,40 @@ class MyTablesView(View):
 	
 	
 	
+
+		
+
+
 class MyDashBoardView(View):
 	def get(self, request):
 
-		return render (request,'dashboard.html', {})
+		conference_rooms = ('Conference','U-Shape','Classroom','Theater')
+		date = request.GET.get('checkDate')
+
+		maxroom = Reservation.objects.raw(
+				"SELECT reservation_id,roomtype FROM myappcabahug_reservation GROUP BY roomtype ORDER BY COUNT(*) DESC LIMIT 1"
+			)
+
+		ava_rooms = []
+		if(date is not None):
+			available = Reservation.objects.raw("SELECT * FROM myappcabahug_reservation WHERE date='"+date+"'")
+
+			for cr in conference_rooms:
+				valid = True
+				for room in available:
+					type = room.roomtype
+					if(type == cr):
+						valid = False
+				if(valid):
+					ava_rooms.append(cr)
+		else:
+			ava_rooms = conference_rooms
 		
+		context = {"maxroom": maxroom,
+			"a_rooms": ava_rooms
+		}
+
+		return render(request, "dashboard.html", context)
+
+
 
